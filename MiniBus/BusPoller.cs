@@ -32,7 +32,7 @@ namespace MiniBus
         {
             for (int i = 0; i < workers.Length; i++)
             {
-                Func<TransportMessage> getMessage = () => this.transport.Receive(this.address);
+                Func<TransportMessage> getMessage = () => this.transport.Get(this.address);
 
                 var waitHandle = new AutoResetEvent(false);
                 var cancelToken = cancellationTokenSource.Token;

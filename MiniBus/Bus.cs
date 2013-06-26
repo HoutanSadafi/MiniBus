@@ -21,9 +21,14 @@ namespace MiniBus
             transport.Send(message);
         }
 
-        public object Receive(string address)
+        public object Get(string address)
         {
-            var message = transport.Receive(address);
+            var message = transport.Get(address);
+            if (message == null)
+            {
+                return null;
+            }
+
             return DeserializeByteArrayToObject(message.Data);
         }
 
